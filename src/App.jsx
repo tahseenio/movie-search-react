@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path='/movie-search-react' element={<Home />}></Route>
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </div>
     </Router>
   );
