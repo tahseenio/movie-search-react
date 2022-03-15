@@ -7,7 +7,8 @@ export default function Search() {
 
   const [Movie, setMovie] = useState('')
   const [data, setData] = useState([])
-  // const [optionDefault, setoptionDefault] = useState('DEFAULT')
+  const [searchResult, setsearchResult] = useState(undefined)
+  const [Selector, setSelector] = useState('DEFAULT')
 
   const API_KEY = '***REMOVED***'
   const POPULAR_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
@@ -20,6 +21,7 @@ export default function Search() {
 
   function handleChange(event) {
     setMovie(event.target.value)
+    setsearchResult(`Search Result: ${event.target.value}`)
   }
 
   useEffect(async() => {
@@ -44,6 +46,7 @@ export default function Search() {
   function setSearch(value) {
     console.log(value)
     setSearchUrl(value)
+    changeResult(value)
   }
 
   function filterMovies(filter) {
@@ -55,6 +58,18 @@ export default function Search() {
     }
   }
 
+  function changeResult(searchUrl) {
+    if (searchUrl === POPULAR_URL) {
+      setsearchResult("Showing Popular Movies")
+    }
+    else if (searchUrl === TRENDING_URL) {
+      setsearchResult("Showing Trending Movies")
+    }
+    else if (searchUrl === TOP_RATED_URL) {
+      setsearchResult("Showing Top Rated Movies")
+    }
+    
+  }
   return (
     <>
       <header>
@@ -63,7 +78,6 @@ export default function Search() {
           <div className="container header__container">
             <h1 className='header__title'>The best place to search for your favourite <span className='text--blue'>movie</span></h1>
             <p className='header__para'>Find your <span className='text--blue'>movie</span> now!</p>
-            <p>SEARCH URL IS {searchUrl}</p>
             <input className='search-bar' type="text" placeholder='Search for a movie...' onKeyUp={(event) => event.key === 'Enter' && handleChange(event)} />
             <a onClick={() => setSearch(POPULAR_URL)}>Popular</a>
             <a onClick={() => setSearch(TRENDING_URL)}>Trending</a>
@@ -76,8 +90,8 @@ export default function Search() {
         <div className="row">
             <div className="container">
                 <div className="movie__header">
-                    <h2 className="movie__header-title">Search Results: {Movie}</h2>
-                    <select name="" defaultValue="DEFAULT" id="movie-selector" onChange={(e) => filterMovies(e.target.value)}>
+                    <h2 className="movie__header-title">{searchResult}</h2>
+                    <select name="" value={Selector} id="movie-selector" onChange={(e) => filterMovies(e.target.value)}>
                         <option value="DEFAULT" disabled>Sort</option>
                         <option value="HIGH_TO_LOW">Rating, High to Low</option>
                         <option value="LOW_TO_HIGH">Rating, Low to High</option>
