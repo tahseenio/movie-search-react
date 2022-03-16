@@ -22,6 +22,7 @@ export default function Search() {
   const [searchUrl, setSearchUrl] = useState('')
 
   function handleChange(event) {
+    if(event.replace(/\s/g,"") === "") return
     if (event) {
       setMovie(event)
       setsearchResult(`Search Result: ${event}`)
@@ -98,7 +99,7 @@ export default function Search() {
     }
   }
 
-  const [searchResult, setsearchResult] = useState(undefined)
+  const [searchResult, setsearchResult] = useState("")
 
   function currentSearch(event) {
     SearchBarInput.current = event
