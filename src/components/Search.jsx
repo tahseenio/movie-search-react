@@ -140,7 +140,7 @@ export default function Search() {
 
             </div>
             <div className="movies">
-              {(data.length !== 0)
+              {(data.length !== 0) //if data exists
                 ? (Loading  
                     ? (
                       new Array(10).fill(0).map((element, index) => (
@@ -149,7 +149,7 @@ export default function Search() {
                       )
                     : data.map(elem => <MovieBoiler info={elem} key={elem.id} />)
                   )
-                : ((data.length === 0 && Movie !== '') && 
+                : ((data.length === 0 && !Loading) && 
                   <div className='no-result'>
                     <p className='no-result__para'>There are no movies based on your search result</p>
                     <img className='no-result__img' src={NoResult} alt="" />

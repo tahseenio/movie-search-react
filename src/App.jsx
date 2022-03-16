@@ -3,6 +3,7 @@ import './App.css';
 import Footer from './components/Footer';
 import Nav from './components/Nav';
 import Home from './pages/Home';
+import MovieDetail from './pages/MovieDetail';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Nav />
       <Routes>
         <Route path='/movie-search-react' element={<Home />}></Route>
+        <Route path='/movie-search-react:id' element={<MovieDetail />}></Route>
       </Routes>
       <Footer />
     </div>
