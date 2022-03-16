@@ -4,6 +4,7 @@ import MovieBoiler from './ui/MovieBoiler'
 
 import movieBanner from '../assets/movie_banner.jpg'
 import LoadingState from './ui/LoadingState';
+import NoResult from '../assets/noresult.svg'
 
 export default function Search() {
   const [Movie, setMovie] = useState('')
@@ -68,6 +69,7 @@ export default function Search() {
     if (data.length > 0) {
       document.getElementById('movie-filter').value = 'DEFAULT'
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [Movie, searchUrl])
 
   function setSearch(value) {
@@ -127,20 +129,23 @@ export default function Search() {
           <div className="container">
             <div className="movie__header">
               <h2 className="movie__header-title">{searchResult}</h2>
-              {(data.length > 0)
-                ?
+              {(data.length > 0) && (
                 <select name="" defaultValue="DEFAULT" id='movie-filter' onChange={(e) => filterMovies(e.target.value)}>
                   <option value="DEFAULT" disabled>Sort</option>
                   <option value="HIGH_TO_LOW">Rating, High to Low</option>
                   <option value="LOW_TO_HIGH">Rating, Low to High</option>
                 </select>
-                : null
+                )
               }
 
             </div>
             <div className="movies">
               {(data.length === 0)
-                ? ((Movie !== '') && <div>There is no movies based on your search result</div>)
+                ? ((Movie !== '') && 
+                  <div className='no-result'>
+                    <p className='no-result__para'>There are no movies based on your search result</p>
+                    <img className='no-result__img' src={NoResult} alt="" />
+                  </div>)
                 : (Loading  
                     ? (
                       new Array(10).fill(0).map((element, index) => (

@@ -290,10 +290,30 @@ Movie search results
   justify-content: center;
 }
 
+/* 
 
+No result found
 
+*/
 
+.no-result {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 auto;
+}
 
+.no-result__img {
+  width: 50%;
+}
+
+.no-result__para {
+  font-weight: 500;
+  color: red;
+  font-size: 1.1rem;
+  text-align: center;
+}
 
 
 
