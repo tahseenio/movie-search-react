@@ -107,7 +107,7 @@ export default function Search() {
   return (
     <>
       <header>
-        <img src={movieBanner} alt="movie banner" className='header__img' />
+        <img src={movieBanner} className='header__img' />
         <div className="row">
           <div className="container header__container">
             <h1 className='header__title'>The best place to search for your favourite <span className='text--blue'>movie</span></h1>

@@ -7,6 +7,7 @@ export default function MovieDetail() {
   const [Data, setData] = useState('')
   const { id } = useParams();
   const [Genre, setGenre] = useState("")
+  const [Loading, setLoading] = useState(true)
   const IMG_URL = `https://image.tmdb.org/t/p/w500${Data.poster_path}`
   const IMDB_URL = `https://www.imdb.com/title/${Data.imdb_id}/`
 
@@ -26,6 +27,9 @@ export default function MovieDetail() {
           setGenre(prevState => prevState + ` ${data.genres[i].name},`)
         }
       }
+      setTimeout(() => {
+        setLoading(false)
+      }, 300);
     }
     fetchData()
   }, [])
@@ -36,19 +40,33 @@ export default function MovieDetail() {
         <Link to={'/movie-search-react'}>
           <span className='btn--back'> <AiOutlineArrowLeft /> Back</span>
         </Link>
-        <div className="MovieDetail--wrapper">
-          <img className='MovieDetail__img' src={IMG_URL} />
-          <div className="MovieDetail__details">
-            <h1 className="MovieDetail__title">{Data.original_title}</h1>
-            <div className="MovieDetail__release-date">Release Date: {Data.release_date}</div>
-            <div className="MovieDetail__runtime">Runtime: {Data.runtime}min</div>
-            <div className="MovieDetail__vote">Vote Average: {Data.vote_average}</div>
-            <div className="MovieDetail__genre">Genre: {Genre}</div>
-            <div className='MovieDetail__summary__title'>Summary</div>
-            <p className='MovieDetail__summary__para'>{Data.overview}</p>
-            <a className="MovieDetail__imdb-logo" href={IMDB_URL} target='_blank'><FaImdb /></a>
-          </div>
-        </div>
+        {!Loading
+          ? (<div className="MovieDetail--wrapper">
+            <img className='MovieDetail__img' src={IMG_URL} />
+            <div className="MovieDetail__details">
+              <h1 className="MovieDetail__title">{Data.original_title}</h1>
+              <div className="MovieDetail__release-date">Release Date: {Data.release_date}</div>
+              <div className="MovieDetail__runtime">Runtime: {Data.runtime}min</div>
+              <div className="MovieDetail__vote">Vote Average: {Data.vote_average}</div>
+              <div className="MovieDetail__genre">Genre: {Genre}</div>
+              <div className='MovieDetail__summary__title'>Summary</div>
+              <p className='MovieDetail__summary__para'>{Data.overview}</p>
+              <a href={IMDB_URL} target='_blank'><FaImdb className="MovieDetail__imdb-logo" /></a>
+            </div>
+          </div>)
+          : (<div className="MovieDetail--wrapper">
+            <div className='MovieDetail__img--skeleton'></div>
+            <div className="MovieDetail__details">
+              <div className="MovieDetail__title--skeleton"></div>
+              <div className="MovieDetail__release-date--skeleton"></div>
+              <div className="MovieDetail__runtime--skeleton"></div>
+              <div className="MovieDetail__vote--skeleton"></div>
+              <div className="MovieDetail__genre--skeleton"></div>
+              <div className='MovieDetail__summary__title--skeleton'></div>
+              <div className='MovieDetail__summary__para--skeleton'></div>
+            </div>
+          </div>)
+        }
       </div>
     </div>
   )
