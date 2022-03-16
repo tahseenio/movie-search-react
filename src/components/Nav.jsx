@@ -3,16 +3,14 @@ import navLogo from '../assets/tmdb_logo.svg';
 import { Link } from 'react-router-dom';
 
 export default function Nav() {
-  function refreshPage() {
-    window.location.reload(false);
-  }
-
   return (
     <nav>
       <div className="nav__container">
-          <figure className="nav__img--wrapper" onClick={() => refreshPage()}>
+        <Link to={'/movie-search-react'}>
+          <figure className="nav__img--wrapper" >
             <img className="nav__img" src={navLogo} alt="" />
           </figure>
+        </Link>
         <ul className="nav__links">
           <Link to={'/movie-search-react'} className="nav__link">
             <li className="

@@ -11,18 +11,17 @@ export default function MovieBoiler({ info }) {
   
 
   return (
-    <div to={'/movie-search-react/'} className="movie">
+    <Link to={`/movie-search-react/${info.id}`} className="movie">
       <figure className="movie__img--wrapper">
-      {/* <a href=""><img className="movie__img" src={IMG_URL} alt=""/></a> */}
         {(IMG_URL === PIC_NULL)
-          ? (<a><div className='skeleton__img no-img'>Cannot get Image</div></a>)
-          : (<a href=""><img className="movie__img" src={IMG_URL} alt=""/></a>)
+          ? (<div className='skeleton__img no-img'>Cannot get Image</div>)
+          : (<img className="movie__img" src={IMG_URL} alt=""/>)
         }
       </figure>
       <div className="movie__info">
         <div>{info.original_title || info.original_name}</div>
         <div>Rating: {info.vote_average}</div>
       </div>
-    </div>
+    </Link>
   )
 }

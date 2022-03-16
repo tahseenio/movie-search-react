@@ -36,7 +36,7 @@ export default function Search() {
         const promise = await fetch(searchUrl)
         const { results } = await promise.json()
         setData(results)
-        // console.log(results)
+        console.log(results)
         setTimeout(() => {
           setLoading(false)
         }, 300);

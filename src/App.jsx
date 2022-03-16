@@ -12,7 +12,7 @@ function App() {
       <Nav />
       <Routes>
         <Route path='/movie-search-react' element={<Home />}></Route>
-        <Route path='/movie-search-react:id' element={<MovieDetail />}></Route>
+        <Route path='/movie-search-react/:id' element={<MovieDetail />}></Route>
       </Routes>
       <Footer />
     </div>

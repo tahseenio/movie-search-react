@@ -3,6 +3,8 @@
 /* 
   TODO: clicking image goes to new page
   TODO: make everything responsive
+  TODO: change react logo at top and document title as well
+  TODO: align search result and sort div area
 */
 
 :root {
@@ -30,7 +32,7 @@ li {
 }
 
 .container {
-  padding: 48px 0;
+  padding: 48px 16px;
 }
 
 .row {
@@ -323,15 +325,62 @@ No result found
   text-align: center;
 }
 
+/* 
 
+MovieDetail
 
+*/
 
+.btn--back {
+  display: flex;
+  align-items: center;
+  font-size: 32px;
+  font-weight: 500;
+  color: black;
+  margin-bottom: 32px;
+}
 
+.MovieDetail--wrapper {
+  display: flex;
+ justify-content: center;
+ gap: 24px;
+}
 
+.MovieDetail__details {
+  max-width: 400px;
+}
 
+.MovieDetail__img {
+  width: 100%;
+  max-width: 500px;
+}
 
+.MovieDetail__title {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
 
+.MovieDetail__release-date,
+.MovieDetail__runtime,
+.MovieDetail__vote,
+.MovieDetail__genre {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
 
+.MovieDetail__summary__title {
+  font-size: 1.4rem;
+  padding-top: 8px;
+  padding-bottom: 4px;
+}
+
+.MovieDetail__summary__para {
+  padding-bottom: 16px;
+}
+
+.MovieDetail__imdb-logo {
+  font-size: 2.5rem;
+}
 
 /* 
 
@@ -349,5 +398,5 @@ footer {
 
 .footer__copyright {
   color: var(--tmdb-light-blue);
-  font-size: 20px;
+  font-size: 18px;
 }
