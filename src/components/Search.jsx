@@ -107,59 +107,61 @@ export default function Search() {
 
   return (
     <>
-      <header>
-        <img src={movieBanner} className='header__img' />
-        <div className="row">
-          <div className="container header__container">
-            <h1 className='header__title'>The best place to search for your favourite <span className='text--blue'>movie</span></h1>
-            <p className='header__para'>Find your <span className='text--blue'>movie</span> now!</p>
-            <div className="search-bar--wrapper">
-              <input className='search-bar' type="text" placeholder='Search for a movie...' onChange={(e) => currentSearch(e.target.value)} onKeyUp={(event) => event.key === 'Enter' && handleChange(event.target.value)} />
-              <span className='search-bar__btn' onClick={() => handleChange(SearchBarInput.current)}><BsSearch /></span>
+      <main>
+        <header>
+          <img src={movieBanner} className='header__img' />
+          <div className="row">
+            <div className="container header__container">
+              <h1 className='header__title'>The best place to search for your favourite <span className='text--blue'>movie</span></h1>
+              <p className='header__para'>Find your <span className='text--blue'>movie</span> now!</p>
+              <div className="search-bar--wrapper">
+                <input className='search-bar' type="text" placeholder='Search for a movie...' onChange={(e) => currentSearch(e.target.value)} onKeyUp={(event) => event.key === 'Enter' && handleChange(event.target.value)} />
+                <span className='search-bar__btn' onClick={() => handleChange(SearchBarInput.current)}><BsSearch /></span>
+              </div>
+              <ul className='header__search-options'>
+                <li className='search-option__link' onClick={() => setSearch(POPULAR_URL)}>Popular</li>
+                <li className='search-option__link' onClick={() => setSearch(TRENDING_URL)}>Trending</li>
+                <li className='search-option__link' onClick={() => setSearch(TOP_RATED_URL)}>Top Rated</li>
+              </ul>
             </div>
-            <ul className='header__search-options'>
-              <li className='search-option__link' onClick={() => setSearch(POPULAR_URL)}>Popular</li>
-              <li className='search-option__link' onClick={() => setSearch(TRENDING_URL)}>Trending</li>
-              <li className='search-option__link' onClick={() => setSearch(TOP_RATED_URL)}>Top Rated</li>
-            </ul>
           </div>
-        </div>
-      </header>
-      <section id="movie-page">
-        <div className="row">
-          <div className="container">
-            <div className="movie__header">
-              <h2 className="movie__header-title">{searchResult}</h2>
-              {(data.length > 0) && (
-                <select name="" defaultValue="DEFAULT" id='movie-filter' onChange={(e) => filterMovies(e.target.value)}>
-                  <option value="DEFAULT" disabled>Sort</option>
-                  <option value="HIGH_TO_LOW">Rating, High to Low</option>
-                  <option value="LOW_TO_HIGH">Rating, Low to High</option>
-                </select>
-                )
-              }
-
-            </div>
-            <div className="movies">
-              {(data.length !== 0) //if data exists
-                ? (Loading  
-                    ? (
-                      new Array(10).fill(0).map((element, index) => (
-                        <LoadingState key={index}/>
-                      ))
-                      )
-                    : data.map(elem => <MovieBoiler info={elem} key={elem.id} />)
+        </header>
+        <section id="movie-page">
+          <div className="row">
+            <div className="movie__container">
+              <div className="movie__header">
+                <h2 className="movie__header-title">{searchResult}</h2>
+                {(data.length > 0) && (
+                  <select name="" defaultValue="DEFAULT" id='movie-filter' onChange={(e) => filterMovies(e.target.value)}>
+                    <option value="DEFAULT" disabled>Sort</option>
+                    <option value="HIGH_TO_LOW">Rating, High to Low</option>
+                    <option value="LOW_TO_HIGH">Rating, Low to High</option>
+                  </select>
                   )
-                : ((data.length === 0 && !Loading) && 
-                  <div className='no-result'>
-                    <p className='no-result__para'>There are no movies based on your search result</p>
-                    <img className='no-result__img' src={NoResult} alt="" />
-                  </div>)
-              }
+                }
+
+              </div>
+              <div className="movies">
+                {(data.length !== 0) //if data exists
+                  ? (Loading  
+                      ? (
+                        new Array(20).fill(0).map((element, index) => (
+                          <LoadingState key={index}/>
+                        ))
+                        )
+                      : data.map(elem => <MovieBoiler info={elem} key={elem.id} />)
+                    )
+                  : ((data.length === 0 && !Loading) && 
+                    <div className='no-result'>
+                      <p className='no-result__para'>There are no movies based on your search result</p>
+                      <img className='no-result__img' src={NoResult} alt="" />
+                    </div>)
+                }
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
     </>
   )
 }

@@ -64,6 +64,10 @@ li {
   background-color: white;
 }
 
+main {
+  min-height: calc(100vh - 92px - 76px);
+}
+
 /* 
 
 NAV
@@ -475,6 +479,12 @@ footer {
 media queries
 
 */
+
+@media(max-height: 1200px) {
+  .header__img {
+    height: 300px;
+  }
+}
 
 @media(max-width: 1000px) {
   .movie {
