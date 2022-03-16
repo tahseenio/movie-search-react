@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { BsSearch } from "react-icons/bs";
 import MovieBoiler from './ui/MovieBoiler'
 
-import movieBanner from '../assets/movie_banner.jpg'
 import LoadingState from './ui/LoadingState';
 import NoResult from '../assets/noresult.svg'
 
@@ -109,7 +108,6 @@ export default function Search() {
     <>
       <main>
         <header>
-          <img src={movieBanner} className='header__img' />
           <div className="row">
             <div className="container header__container">
               <h1 className='header__title'>The best place to search for your favourite <span className='text--blue'>movie</span></h1>
