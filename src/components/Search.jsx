@@ -7,7 +7,7 @@ import LoadingState from './ui/LoadingState';
 
 export default function Search() {
   const [Movie, setMovie] = useState('')
-  const [data, setData] = useState(undefined)
+  const [data, setData] = useState([])
   const [Loading, setLoading] = useState(true)
 
   const SearchBarInput = useRef('')
@@ -16,7 +16,7 @@ export default function Search() {
   const POPULAR_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
   const TRENDING_URL = `https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`
   const TOP_RATED_URL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`
-  const SEARCHED_URL = `https://api.themoviedb.org/3/search/movie?api_key=***REMOVED***&language=en-US&query=${Movie}&page=1&include_adult=false`
+  
 
   const [searchUrl, setSearchUrl] = useState('')
 
@@ -27,37 +27,45 @@ export default function Search() {
     }
   }
 
-  useEffect(async () => {
-    if (searchUrl !== '') {
-      setLoading(true)
-      setMovie('')
-      const promise = await fetch(searchUrl)
-      const { results } = await promise.json()
-      setData(results)
-      console.log(results)
-      setTimeout(() => {
-        setLoading(false)
-      }, 300);
+  useEffect(() => {
+    async function fetchData() {
+      if (searchUrl !== '') {
+        setLoading(true)
+        setMovie('')
+        const promise = await fetch(searchUrl)
+        const { results } = await promise.json()
+        setData(results)
+        // console.log(results)
+        setTimeout(() => {
+          setLoading(false)
+        }, 300);
+      }
     }
-
+    fetchData()
   }, [searchUrl])
 
-  useEffect(async () => {
-    if (Movie !== '') {
-      setLoading(true)
-      setSearch('')
-      const promise = await fetch(SEARCHED_URL)
-      const { results } = await promise.json()
-      setData(results)
-      console.log(results)
-      setTimeout(() => {
-        setLoading(false)
-      }, 300);
+  useEffect(() => {
+    const SEARCHED_URL = `https://api.themoviedb.org/3/search/movie?api_key=***REMOVED***&language=en-US&query=${Movie}&page=1&include_adult=false`
+
+    async function fetchData() {
+      if (Movie !== '') {
+        setLoading(true)
+        setSearch('')
+        const promise = await fetch(SEARCHED_URL)
+        const { results } = await promise.json()
+        setData(results)
+        // console.log(results)
+        setTimeout(() => {
+          setLoading(false)
+        }, 300);
+      }
     }
+    fetchData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [Movie])
 
   useEffect(() => {
-    if (data) {
+    if (data.length > 0) {
       document.getElementById('movie-filter').value = 'DEFAULT'
     }
   }, [Movie, searchUrl])
@@ -94,6 +102,7 @@ export default function Search() {
     SearchBarInput.current = event
   }
 
+  console.log(data.length)
   return (
     <>
       <header>
@@ -104,12 +113,12 @@ export default function Search() {
             <p className='header__para'>Find your <span className='text--blue'>movie</span> now!</p>
             <div className="search-bar--wrapper">
               <input className='search-bar' type="text" placeholder='Search for a movie...' onChange={(e) => currentSearch(e.target.value)} onKeyUp={(event) => event.key === 'Enter' && handleChange(event.target.value)} />
-              <a className='search-bar__btn' onClick={() => handleChange(SearchBarInput.current)}><BsSearch /></a>
+              <span className='search-bar__btn' onClick={() => handleChange(SearchBarInput.current)}><BsSearch /></span>
             </div>
             <ul className='header__search-options'>
-              <li><a className='search-option__link' onClick={() => setSearch(POPULAR_URL)}>Popular</a></li>
-              <li><a className='search-option__link' onClick={() => setSearch(TRENDING_URL)}>Trending</a></li>
-              <li><a className='search-option__link' onClick={() => setSearch(TOP_RATED_URL)}>Top Rated</a></li>
+              <li className='search-option__link' onClick={() => setSearch(POPULAR_URL)}>Popular</li>
+              <li className='search-option__link' onClick={() => setSearch(TRENDING_URL)}>Trending</li>
+              <li className='search-option__link' onClick={() => setSearch(TOP_RATED_URL)}>Top Rated</li>
             </ul>
           </div>
         </div>
@@ -119,7 +128,7 @@ export default function Search() {
           <div className="container">
             <div className="movie__header">
               <h2 className="movie__header-title">{searchResult}</h2>
-              {data
+              {(data.length > 0)
                 ?
                 <select name="" defaultValue="DEFAULT" id='movie-filter' onChange={(e) => filterMovies(e.target.value)}>
                   <option value="DEFAULT" disabled>Sort</option>
@@ -131,16 +140,16 @@ export default function Search() {
 
             </div>
             <div className="movies">
-              {(data !== undefined)
-                ? (Loading  
+              {(data.length === 0)
+                ? ((Movie !== '') && <div>There is no movies based on your search result</div>)
+                : (Loading  
                     ? (
                       new Array(10).fill(0).map((element, index) => (
                         <LoadingState key={index}/>
                       ))
-                    )
+                      )
                     : data.map(elem => <MovieBoiler info={elem} key={elem.id} />)
                   )
-                : null
               }
             </div>
           </div>
