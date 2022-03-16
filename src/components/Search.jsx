@@ -102,7 +102,6 @@ export default function Search() {
     SearchBarInput.current = event
   }
 
-  console.log(data.length)
   return (
     <>
       <header>
