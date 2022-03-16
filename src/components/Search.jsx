@@ -140,13 +140,8 @@ export default function Search() {
 
             </div>
             <div className="movies">
-              {(data.length === 0)
-                ? ((Movie !== '') && 
-                  <div className='no-result'>
-                    <p className='no-result__para'>There are no movies based on your search result</p>
-                    <img className='no-result__img' src={NoResult} alt="" />
-                  </div>)
-                : (Loading  
+              {(data.length !== 0)
+                ? (Loading  
                     ? (
                       new Array(10).fill(0).map((element, index) => (
                         <LoadingState key={index}/>
@@ -154,6 +149,11 @@ export default function Search() {
                       )
                     : data.map(elem => <MovieBoiler info={elem} key={elem.id} />)
                   )
+                : ((data.length === 0 && Movie !== '') && 
+                  <div className='no-result'>
+                    <p className='no-result__para'>There are no movies based on your search result</p>
+                    <img className='no-result__img' src={NoResult} alt="" />
+                  </div>)
               }
             </div>
           </div>
