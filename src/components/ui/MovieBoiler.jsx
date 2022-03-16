@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 export default function MovieBoiler({ info }) {
   const IMG_URL = `https://image.tmdb.org/t/p/w500${info.backdrop_path}`
   const PIC_NULL = 'https://image.tmdb.org/t/p/w500null'
-
+  
   
 
   return (

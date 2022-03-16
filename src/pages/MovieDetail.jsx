@@ -10,8 +10,7 @@ export default function MovieDetail() {
   const [Loading, setLoading] = useState(true)
   const IMG_URL = `https://image.tmdb.org/t/p/w500${Data.poster_path}`
   const IMDB_URL = `https://www.imdb.com/title/${Data.imdb_id}/`
-
-
+  
   useEffect(() => {
     async function fetchData() {
       const promise = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=***REMOVED***&language=en-US`)
@@ -34,6 +33,8 @@ export default function MovieDetail() {
     fetchData()
   }, [])
 
+  const PIC_NULL = 'https://image.tmdb.org/t/p/w500null'
+
   return (
     <div className="row">
       <div className="container MovieDetail__container">
@@ -42,7 +43,11 @@ export default function MovieDetail() {
         </Link>
         {!Loading
           ? (<div className="MovieDetail--wrapper">
-            <img className='MovieDetail__img' src={IMG_URL} />
+            {(IMG_URL === PIC_NULL)
+              ? (<div className='MovieDetail__img--skeleton no-img'>Cannot get Image</div>)
+              : (<img className='MovieDetail__img' src={IMG_URL} />)
+            }
+            
             <div className="MovieDetail__details">
               <h1 className="MovieDetail__title">{Data.original_title}</h1>
               <div className="MovieDetail__release-date">Release Date: {Data.release_date}</div>

@@ -295,6 +295,7 @@ Movie search results
   display: flex;
   align-items: center;
   justify-content: center;
+  color: black;
 }
 
 /* 
@@ -342,7 +343,6 @@ MovieDetail
 }
 
 .MovieDetail--wrapper {
-  align-items: center;
   display: flex;
   justify-content: center;
   gap: 24px;
@@ -501,6 +501,10 @@ media queries
     width: 70%;
     height: 537px;
   }
+  .MovieDetail--wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 @media(max-width: 460px) {
@@ -518,9 +522,6 @@ media queries
   }
   .header__img {
     height: 300px;
-  }
-  .MovieDetail--wrapper {
-    flex-direction: column;
   }
   .MovieDetail__img--skeleton {
     height: 400px;
