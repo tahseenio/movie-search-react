@@ -4,6 +4,7 @@ import MovieBoiler from './ui/MovieBoiler'
 
 import LoadingState from './ui/LoadingState';
 import NoResult from '../assets/noresult.svg'
+import axios from 'axios';
 
 export default function Search() {
   const [Movie, setMovie] = useState('')
@@ -33,10 +34,8 @@ export default function Search() {
       if (searchUrl !== '') {
         setLoading(true)
         setMovie('')
-        const promise = await fetch(searchUrl)
-        const { results } = await promise.json()
-        setData(results)
-        console.log(results)
+        const { data } = await axios.get(searchUrl)
+        setData(data.results)
         setTimeout(() => {
           setLoading(false)
         }, 300);
@@ -52,10 +51,8 @@ export default function Search() {
       if (Movie !== '') {
         setLoading(true)
         setSearch('')
-        const promise = await fetch(SEARCHED_URL)
-        const { results } = await promise.json()
-        setData(results)
-        // console.log(results)
+        const { data } = await axios.get(SEARCHED_URL)
+        setData(data.results)
         setTimeout(() => {
           setLoading(false)
         }, 300);
