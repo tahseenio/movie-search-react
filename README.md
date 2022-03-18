@@ -12,7 +12,7 @@
 #####  React useState, useEffect, useRef and React Router
 
 <img src="https://i.imgur.com/gIdl47S.png">
-##### Axios to fetch data
+#####  Axios to fetch data
 
 <img src="https://i.imgur.com/8GD8yGg.png">
 #####  Skeleton Loading States
