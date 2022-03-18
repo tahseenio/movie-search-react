@@ -31,7 +31,7 @@
 
 `npm install npm`
 
-##### Start the react
+##### Start the react app
 
 `npm run start`
 
