@@ -40,5 +40,7 @@
 `npm run deploy`
 
 <br>
+
 ### Contribution
+
 <p>If any bugs are found please create a pull request explaining the issue found</p>
