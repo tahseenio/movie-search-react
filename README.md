@@ -29,19 +29,19 @@
 
 ## Installation and Usage
 
-##### Clone the repo using
+##### 1. Clone the repo using
 
 `git clone https://github.com/tahseenio/movie-search-react.git`
 
-##### Install NPM
+##### 2. Install NPM
 
 `npm install npm`
 
-##### Start the react app
+##### 3. Start the react app
 
 `npm run start`
 
-##### To build the website for deploying to github
+##### OPTIONAL To build the website for deploying to github
 
 `npm run deploy`
 
