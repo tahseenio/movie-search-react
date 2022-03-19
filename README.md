@@ -6,6 +6,7 @@
 - A Movie Search website created using React, HTML, CSS and JS
 - Utilises the [TMDB API](https://developers.themoviedb.org/3/getting-started/introduction) to retrieve movie information
 - Can search for specific movies or can find the latest, trending and top rated movies
+- Responsive on all devices
 - The website can be viewed [here](https://tahseenio.github.io/movie-search-react/)
 
 ## Screenshots
