@@ -17,11 +17,11 @@
 ## Example Code used and Snippets
 #####  React Hooks (useState, useEffect, useRef, useParams) and React Router
 
-<img src="https://i.imgur.com/gIdl47S.png">
+<img src="https://i.imgur.com/9cY0N9C.png">
 
 #####  Axios to fetch data
 
-<img src="https://i.imgur.com/8GD8yGg.png">
+<img src="https://i.imgur.com/OtvRyRP.png">
 
 #####  Skeleton Loading States
 
