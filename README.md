@@ -8,8 +8,14 @@
 - Can search for specific movies or can find the latest, trending and top rated movies
 - The website can be viewed [here](https://tahseenio.github.io/movie-search-react/)
 
+## Screenshots
+
+<img src="https://i.imgur.com/e6X0tfM.png">
+
+<img src="https://i.imgur.com/efFo3AB.png">
+
 ## Example Code used and Snippets
-#####  React useState, useEffect, useRef and React Router
+#####  React Hooks (useState, useEffect, useRef, useParams) and React Router
 
 <img src="https://i.imgur.com/gIdl47S.png">
 
