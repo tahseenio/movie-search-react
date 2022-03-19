@@ -5,29 +5,39 @@ import { Link } from 'react-router-dom';
 export default function Nav() {
   return (
     <nav>
-      <div className="nav__container">
+      <div className='nav__container'>
         <Link to={'/movie-search-react'}>
-          <figure className="nav__img--wrapper" >
-            <img className="nav__img" src={navLogo} alt="" />
+          <figure className='nav__img--wrapper'>
+            <img className='nav__img' src={navLogo} alt='' />
           </figure>
         </Link>
-        <ul className="nav__links">
-          <Link to={'/movie-search-react'} className="nav__link">
-            <li className="
+        <ul className='nav__links'>
+          <Link to={'/movie-search-react'} className='nav__link'>
+            <li
+              className='
               nav__link--anchor
               link__hover-effect
               link__hover-effect--white
-              " href="">Home</li>
+              '
+              href=''
+            >
+              Home
+            </li>
           </Link>
           <Link to={'/movie-search-react'} className='nav__link'>
-            <li className="
+            <li
+              className='
               nav__link--anchor
               btn-contact
               no-cursor
-              " href="">Contact</li>
+              '
+              href=''
+            >
+              Contact
+            </li>
           </Link>
         </ul>
       </div>
     </nav>
-  )
+  );
 }
