@@ -42,7 +42,7 @@
 
 `npm run start`
 
-##### OPTIONAL To build the website for deploying to github
+##### OPTIONAL To build the website for deployment to github
 
 `npm run deploy`
 
