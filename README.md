@@ -26,7 +26,7 @@
 
 #####  Skeleton Loading States
 
-<img src="https://im.ezgif.com/tmp/ezgif-1-c76bef527c.gif">
+****Image upload in progress
 
 ## Installation and Usage
 
