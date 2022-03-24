@@ -26,7 +26,7 @@
 
 #####  Skeleton Loading States
 
-****Image upload in progress
+<img src="https://tenor.com/bRVEX.gif">
 
 ## Installation and Usage
 
