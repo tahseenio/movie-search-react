@@ -54,7 +54,7 @@ export default function Search() {
         setData(data.results);
         setTimeout(() => {
           setLoading(false);
-        }, 300);
+        }, 500);
       }
     }
     fetchData();
@@ -105,7 +105,7 @@ export default function Search() {
           <div className='row'>
             <div className='container header__container'>
               <h1 className='header__title'>
-                The best place to search for your favourite{' '}
+                The best place to search for your favourite {'  '}
                 <span className='text--blue'>movie</span>
               </h1>
               <p className='header__para'>
@@ -116,6 +116,7 @@ export default function Search() {
                   className='search-bar'
                   type='text'
                   placeholder='Search for a movie...'
+                  value={Movie}
                   onChange={(e) => currentSearch(e.target.value)}
                   onKeyUp={(event) =>
                     event.key === 'Enter' && handleChange(event.target.value)
