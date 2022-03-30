@@ -115,8 +115,8 @@ export default function Search() {
                 <input
                   className='search-bar'
                   type='text'
+                  name='searchbar'
                   placeholder='Search for a movie...'
-                  value={Movie}
                   onChange={(e) => currentSearch(e.target.value)}
                   onKeyUp={(event) =>
                     event.key === 'Enter' && handleChange(event.target.value)
