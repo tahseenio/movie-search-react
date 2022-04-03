@@ -32,6 +32,7 @@ export default function MovieDetail() {
       }, 300);
     }
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const PIC_NULL = 'https://image.tmdb.org/t/p/w500null';
@@ -52,7 +53,7 @@ export default function MovieDetail() {
                 Cannot get Image
               </div>
             ) : (
-              <img className='MovieDetail__img' src={IMG_URL} />
+              <img className='MovieDetail__img' src={IMG_URL} alt='' />
             )}
 
             <div className='MovieDetail__details'>
@@ -69,7 +70,7 @@ export default function MovieDetail() {
               <div className='MovieDetail__genre'>Genre: {Genre}</div>
               <div className='MovieDetail__summary__title'>Summary</div>
               <p className='MovieDetail__summary__para'>{Data.overview}</p>
-              <a href={IMDB_URL} target='_blank'>
+              <a href={IMDB_URL} target='_blank' rel="noreferrer">
                 <FaImdb className='MovieDetail__imdb-logo' />
               </a>
             </div>

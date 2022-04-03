@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { BsSearch } from 'react-icons/bs';
 import MovieBoiler from './ui/MovieBoiler';
 
-import LoadingState from './ui/LoadingState';
 import NoResult from '../assets/noresult.svg';
 import axios from 'axios';
 
@@ -173,23 +172,16 @@ export default function Search() {
                 )}
               </div>
               <div className='movies'>
-                {data.length !== 0 //if data exists
-                  ? Loading
-                    ? new Array(20)
-                      .fill(0)
-                      .map((element, index) => <LoadingState key={index} />)
-                    : data.map((elem) => (
-                      <MovieBoiler info={elem} key={elem.id} />
-                    ))
-                  : data.length === 0 &&
-                  !Loading && (
-                    <div className='no-result'>
-                      <p className='no-result__para'>
-                        There are no movies based on your search result
-                      </p>
-                      <img className='no-result__img' src={NoResult} alt='' />
-                    </div>
-                  )}
+                {data.length !== 0
+                  ? (data.map((elem) => (<MovieBoiler info={elem} key={elem.id} />)))
+                  : data.length === 0 && !Loading && (<div className='no-result'>
+                    <p className='no-result__para'>
+                      There are no movies based on your search result
+                    </p>
+                    <img className='no-result__img' src={NoResult} alt='' />
+                  </div>)
+
+                }
               </div>
             </div>
           </div>
