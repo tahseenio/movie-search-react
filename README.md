@@ -31,7 +31,7 @@
 
 #####  Cypress example test case
 
-
+<img src="https://i.imgur.com/pkNwnuP.png">
 
 ## Installation and Usage
 
