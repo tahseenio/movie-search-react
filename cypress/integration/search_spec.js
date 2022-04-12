@@ -24,9 +24,6 @@ describe('User Experience Test 3', () => {
     cy.visit('http://localhost:3000/movie-search-react');
     cy.findByText(/top rated/i).click()
     cy.wait(2000)
-    // cy.findByRole('combobox').select(1)
-    // cy.wait(2000)
-    // cy.findByRole('combobox').select(2)
     cy.findByText(/trending/i).click()
     cy.wait(2000)
     cy.findByText(/popular/i).click()

@@ -17,10 +17,12 @@ export default function Search() {
   const TRENDING_URL = `https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`;
   const TOP_RATED_URL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
 
-  const [searchUrl, setSearchUrl] = useState('');
+  const [searchUrl, setSearchUrl] = useState(POPULAR_URL);
 
   function handleChange(event) {
-    if (event.replace(/\s/g, '') === '') return;
+    if (event.replace(/\s/g, '') === '') {
+      setSearch(POPULAR_URL)
+    };
     if (event) {
       setMovie(event);
       setsearchResult(`Search Result: ${event}`);
@@ -91,7 +93,7 @@ export default function Search() {
     }
   }
 
-  const [searchResult, setsearchResult] = useState('');
+  const [searchResult, setsearchResult] = useState('Showing Popular Movies');
 
   function currentSearch(event) {
     SearchBarInput.current = event;
