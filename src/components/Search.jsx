@@ -20,9 +20,10 @@ export default function Search() {
   const [searchUrl, setSearchUrl] = useState(POPULAR_URL);
 
   function handleChange(event) {
-    if (event.replace(/\s/g, '') === '') {
+    if (event === '') {
       setSearch(POPULAR_URL)
     };
+    if (event.replace(/\s/g, '') === '') return
     if (event) {
       setMovie(event);
       setsearchResult(`Search Result: ${event}`);
