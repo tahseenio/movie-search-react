@@ -7,6 +7,7 @@
 - Utilises the [TMDB API](https://developers.themoviedb.org/3/getting-started/introduction) to retrieve movie information
 - Can search for specific movies or can find the latest, trending and top rated movies
 - Responsive on all devices
+- Testing UI done with Cypress
 - The website can be viewed [here](https://tahseenio.github.io/movie-search-react/)
 
 ## Screenshots
@@ -27,6 +28,10 @@
 #####  Skeleton Loading States
 
 <img src="https://i.imgur.com/XetsFGs.gif">
+
+#####  Cypress example test case
+
+<img src="https://i.imgur.com/pkNwnuP.png">
 
 ## Installation and Usage
 
