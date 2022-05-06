@@ -6,6 +6,7 @@ import NoResult from '../assets/noresult.svg';
 import axios from 'axios';
 
 export default function Search() {
+  // TODO: make code cleaner
   const [Movie, setMovie] = useState<string>('');
   const [data, setData] = useState<any>([]);
   const [Loading, setLoading] = useState(true);
