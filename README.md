@@ -1,14 +1,15 @@
 # 🍿 Movie Search
 
-<img src="https://img.shields.io/github/deployments/tahseenio/movie-search-react/github-pages" alt="GitHub Badge"> <img src="https://img.shields.io/github/repo-size/tahseenio/movie-search-react">
+<img src="https://img.shields.io/github/repo-size/tahseenio/movie-search-react">
 
 ### Description
+
 - A Movie Search website created using React, HTML, CSS and JS
 - Utilises the [TMDB API](https://developers.themoviedb.org/3/getting-started/introduction) to retrieve movie information
 - Can search for specific movies or can find the latest, trending and top rated movies
 - Responsive on all devices
 - Testing UI done with Cypress
-- The website can be viewed [here](https://tahseenio.github.io/movie-search-react/)
+- The website can be viewed [here](https://movie-search-react-one.vercel.app/)
 
 ## Screenshots
 
@@ -17,19 +18,20 @@
 <img src="https://i.imgur.com/efFo3AB.png">
 
 ## Example Code used and Snippets
-#####  React Hooks (useState, useEffect, useRef, useParams) and React Router
+
+##### React Hooks (useState, useEffect, useRef, useParams) and React Router
 
 <img src="https://i.imgur.com/9cY0N9C.png">
 
-#####  Axios to fetch data
+##### Axios to fetch data
 
 <img src="https://i.imgur.com/OtvRyRP.png">
 
-#####  Skeleton Loading States
+##### Skeleton Loading States
 
 <img src="https://i.imgur.com/XetsFGs.gif">
 
-#####  Cypress example test case
+##### Cypress example test case
 
 <img src="https://i.imgur.com/pkNwnuP.png">
 
@@ -50,7 +52,6 @@
 ##### OPTIONAL To build the website for deployment to github
 
 `npm run deploy`
-
 
 ## Contribution
 

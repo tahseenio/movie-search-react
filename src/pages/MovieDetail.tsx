@@ -41,7 +41,7 @@ export default function MovieDetail() {
   return (
     <div className='row'>
       <div className='container MovieDetail__container'>
-        <Link to={'/movie-search-react'}>
+        <Link to={'/'}>
           <span className='btn--back'>
             {' '}
             <AiOutlineArrowLeft /> Back

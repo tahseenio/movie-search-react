@@ -24,7 +24,7 @@ export default function MovieBoiler({ info }: { info: infoProps }) {
     <>
       {img ? (
         <>
-          <Link to={`/movie-search-react/${info.id}`} className='movie'>
+          <Link to={`/${info.id}`} className='movie'>
             <figure className='movie__img--wrapper'>
               {img.src === PIC_NULL ? (
                 <div className='skeleton__img no-img'>Cannot get Image</div>

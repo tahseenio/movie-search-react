@@ -11,11 +11,8 @@ function App() {
       <div className='App'>
         <Nav />
         <Routes>
-          <Route path='/movie-search-react' element={<Home />}></Route>
-          <Route
-            path='/movie-search-react/:id'
-            element={<MovieDetail />}
-          ></Route>
+          <Route path='/' element={<Home />}></Route>
+          <Route path='/:id' element={<MovieDetail />}></Route>
         </Routes>
         <Footer />
       </div>

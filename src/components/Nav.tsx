@@ -6,13 +6,13 @@ export default function Nav() {
   return (
     <nav>
       <div className='nav__container'>
-        <Link to={'/movie-search-react'}>
+        <Link to={'/'}>
           <figure className='nav__img--wrapper'>
             <img className='nav__img' src={navLogo} alt='' />
           </figure>
         </Link>
         <ul className='nav__links'>
-          <Link to={'/movie-search-react'} className='nav__link'>
+          <Link to={'/'} className='nav__link'>
             <li
               className='
               nav__link--anchor
@@ -23,7 +23,7 @@ export default function Nav() {
               Home
             </li>
           </Link>
-          <Link to={'/movie-search-react'} className='nav__link'>
+          <Link to={'/'} className='nav__link'>
             <li
               className='
               nav__link--anchor
