@@ -19,7 +19,6 @@ export default function Nav() {
               link__hover-effect
               link__hover-effect--white
               '
-              href=''
             >
               Home
             </li>
@@ -31,7 +30,6 @@ export default function Nav() {
               btn-contact
               no-cursor
               '
-              href=''
             >
               Contact
             </li>

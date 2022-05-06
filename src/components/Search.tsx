@@ -6,8 +6,8 @@ import NoResult from '../assets/noresult.svg';
 import axios from 'axios';
 
 export default function Search() {
-  const [Movie, setMovie] = useState('');
-  const [data, setData] = useState([]);
+  const [Movie, setMovie] = useState<string>('');
+  const [data, setData] = useState<any>([]);
   const [Loading, setLoading] = useState(true);
 
   const SearchBarInput = useRef('');
@@ -19,16 +19,27 @@ export default function Search() {
 
   const [searchUrl, setSearchUrl] = useState(POPULAR_URL);
 
-  function handleChange(event) {
+  function handleChange(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.currentTarget.value === '') {
+      setSearch(POPULAR_URL);
+    }
+    if (event.currentTarget.value.replace(/\s/g, '') === '') return;
+    if (event.currentTarget.value) {
+      setMovie(event.currentTarget.value);
+      setsearchResult(`Search Result: ${event.currentTarget.value}`);
+    }
+  }
+
+  const handleChange2 = (event: string) => {
     if (event === '') {
-      setSearch(POPULAR_URL)
-    };
-    if (event.replace(/\s/g, '') === '') return
+      setSearch(POPULAR_URL);
+    }
+    if (event.replace(/\s/g, '') === '') return;
     if (event) {
       setMovie(event);
       setsearchResult(`Search Result: ${event}`);
     }
-  }
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -65,26 +76,31 @@ export default function Search() {
 
   useEffect(() => {
     if (data.length > 0) {
-      document.getElementById('movie-filter').value = 'DEFAULT';
+      (document.getElementById('movie-filter') as HTMLInputElement).value =
+        'DEFAULT';
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [Movie, searchUrl]);
 
-  function setSearch(value) {
+  function setSearch(value: string) {
     setSearchUrl(value);
     changeResult(value);
   }
 
-  function filterMovies(filter) {
+  function filterMovies(filter: string) {
     if (filter === 'HIGH_TO_LOW') {
-      setData(data.slice().sort((a, b) => b.vote_average - a.vote_average));
+      setData(
+        data.slice().sort((a: any, b: any) => b.vote_average - a.vote_average)
+      );
     }
     if (filter === 'LOW_TO_HIGH') {
-      setData(data.slice().sort((a, b) => a.vote_average - b.vote_average));
+      setData(
+        data.slice().sort((a: any, b: any) => a.vote_average - b.vote_average)
+      );
     }
   }
 
-  function changeResult(searchUrl) {
+  function changeResult(searchUrl: string) {
     if (searchUrl === POPULAR_URL) {
       setsearchResult('Showing Popular Movies');
     } else if (searchUrl === TRENDING_URL) {
@@ -96,8 +112,8 @@ export default function Search() {
 
   const [searchResult, setsearchResult] = useState('Showing Popular Movies');
 
-  function currentSearch(event) {
-    SearchBarInput.current = event;
+  function currentSearch(event: React.ChangeEvent<HTMLInputElement>) {
+    SearchBarInput.current = event.target.value;
   }
 
   return (
@@ -119,14 +135,14 @@ export default function Search() {
                   type='text'
                   name='searchbar'
                   placeholder='Search for a movie...'
-                  onChange={(e) => currentSearch(e.target.value)}
+                  onChange={(e) => currentSearch(e)}
                   onKeyUp={(event) =>
-                    event.key === 'Enter' && handleChange(event.target.value)
+                    event.key === 'Enter' && handleChange(event)
                   }
                 />
                 <span
                   className='search-bar__btn'
-                  onClick={() => handleChange(SearchBarInput.current)}
+                  onClick={() => handleChange2(SearchBarInput.current)}
                 >
                   <BsSearch />
                 </span>
@@ -176,15 +192,18 @@ export default function Search() {
               </div>
               <div className='movies'>
                 {data.length !== 0
-                  ? (data.map((elem) => (<MovieBoiler info={elem} key={elem.id} />)))
-                  : data.length === 0 && !Loading && (<div className='no-result'>
-                    <p className='no-result__para'>
-                      There are no movies based on your search result
-                    </p>
-                    <img className='no-result__img' src={NoResult} alt='' />
-                  </div>)
-
-                }
+                  ? data.map((elem: any) => (
+                      <MovieBoiler info={elem} key={elem.id} />
+                    ))
+                  : data.length === 0 &&
+                    !Loading && (
+                      <div className='no-result'>
+                        <p className='no-result__para'>
+                          There are no movies based on your search result
+                        </p>
+                        <img className='no-result__img' src={NoResult} alt='' />
+                      </div>
+                    )}
               </div>
             </div>
           </div>

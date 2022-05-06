@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { infoProps } from '../../types/Types';
 
-export default function MovieBoiler({ info }) {
+export default function MovieBoiler({ info }: { info: infoProps }) {
   const IMG_URL = `https://image.tmdb.org/t/p/w500${info.backdrop_path}`;
   const PIC_NULL = 'https://image.tmdb.org/t/p/w500null';
-  const [img, setImg] = useState();
+  const [img, setImg] = useState<HTMLImageElement>();
 
   useEffect(() => {
     const image = new Image();
-    image.src = IMG_URL
+    image.src = IMG_URL;
     // if image url is valid run below otherwise just setImg
     image.onload = () => {
-      setImg(image)
+      setImg(image);
       // console.log("able to load")
-    }
+    };
     image.onerror = () => {
-      setImg(image)
-    }
+      setImg(image);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
   return (
     <>
       {img ? (
@@ -49,8 +50,7 @@ export default function MovieBoiler({ info }) {
             </div>
           </div>
         </>
-      )
-      }
+      )}
     </>
   );
 }

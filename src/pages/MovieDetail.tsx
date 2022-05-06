@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { FaImdb } from 'react-icons/fa';
+import { dataProps } from '../types/Types';
 
 export default function MovieDetail() {
-  const [Data, setData] = useState('');
+  const [Data, setData] = useState<dataProps | null>(null);
   const { id } = useParams();
-  const [Genre, setGenre] = useState('');
-  const [Loading, setLoading] = useState(true);
-  const IMG_URL = `https://image.tmdb.org/t/p/w500${Data.poster_path}`;
-  const IMDB_URL = `https://www.imdb.com/title/${Data.imdb_id}/`;
+  const [Genre, setGenre] = useState<string>('');
+  const [Loading, setLoading] = useState<boolean>(true);
+  const IMG_URL = `https://image.tmdb.org/t/p/w500${Data?.poster_path}`;
+  const IMDB_URL = `https://www.imdb.com/title/${Data?.imdb_id}/`;
 
   useEffect(() => {
     async function fetchData() {
@@ -17,7 +18,7 @@ export default function MovieDetail() {
         `https://api.themoviedb.org/3/movie/${id}?api_key=***REMOVED***&language=en-US`
       );
       const data = await promise.json();
-      // console.log(data)
+      // console.log(data);
       setData(data);
 
       for (let i = 0; i < data.genres.length; i++) {
@@ -57,20 +58,20 @@ export default function MovieDetail() {
             )}
 
             <div className='MovieDetail__details'>
-              <h1 className='MovieDetail__title'>{Data.original_title}</h1>
+              <h1 className='MovieDetail__title'>{Data?.original_title}</h1>
               <div className='MovieDetail__release-date'>
-                Release Date: {Data.release_date}
+                Release Date: {Data?.release_date}
               </div>
               <div className='MovieDetail__runtime'>
-                Runtime: {Data.runtime}min
+                Runtime: {Data?.runtime}min
               </div>
               <div className='MovieDetail__vote'>
-                Vote Average: {Data.vote_average}
+                Vote Average: {Data?.vote_average}
               </div>
               <div className='MovieDetail__genre'>Genre: {Genre}</div>
               <div className='MovieDetail__summary__title'>Summary</div>
-              <p className='MovieDetail__summary__para'>{Data.overview}</p>
-              <a href={IMDB_URL} target='_blank' rel="noreferrer">
+              <p className='MovieDetail__summary__para'>{Data?.overview}</p>
+              <a href={IMDB_URL} target='_blank' rel='noreferrer'>
                 <FaImdb className='MovieDetail__imdb-logo' />
               </a>
             </div>
