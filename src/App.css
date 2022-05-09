@@ -113,7 +113,7 @@ nav {
 }
 
 .nav__link--anchor {
-  color: black;
+  color: white;
   font-size: 16px;
   font-weight: 700;
 }
@@ -193,7 +193,7 @@ header
 .search-option__link {
   padding: 16px 8px;
   margin: 10px;
-  color: black;
+  color: white;
   font-weight: 500;
   background-color: var(--tmdb-light-blue);
   border-radius: 8px;
