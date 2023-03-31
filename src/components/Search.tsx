@@ -14,9 +14,9 @@ export default function Search() {
   const SearchBarInput = useRef('');
 
   const API_KEY = process.env.REACT_APP_API_KEY;
-  const POPULAR_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
-  const TRENDING_URL = `https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`;
-  const TOP_RATED_URL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
+  const POPULAR_URL = `https://still-depths-10330.herokuapp.com/popular`;
+  const TRENDING_URL = `https://still-depths-10330.herokuapp.com/trending`;
+  const TOP_RATED_URL = `https://still-depths-10330.herokuapp.com/toprated`;
 
   const [searchUrl, setSearchUrl] = useState(POPULAR_URL);
 
@@ -58,7 +58,7 @@ export default function Search() {
   }, [searchUrl]);
 
   useEffect(() => {
-    const SEARCHED_URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${Movie}&page=1&include_adult=false`;
+    const SEARCHED_URL = `https://still-depths-10330.herokuapp.com/searched?movie=${Movie}`;
 
     async function fetchData() {
       if (Movie !== '') {

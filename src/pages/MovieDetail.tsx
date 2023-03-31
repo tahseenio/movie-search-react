@@ -15,7 +15,7 @@ export default function MovieDetail() {
   useEffect(() => {
     async function fetchData() {
       const promise = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
+        `https://still-depths-10330.herokuapp.com/banner?id=${id}`
       );
       const data = await promise.json();
       // console.log(data);
