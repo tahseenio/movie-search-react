@@ -15,7 +15,7 @@ export default function MovieDetail() {
   useEffect(() => {
     async function fetchData() {
       const promise = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=***REMOVED***&language=en-US`
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
       );
       const data = await promise.json();
       // console.log(data);

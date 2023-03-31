@@ -58,7 +58,7 @@ export default function Search() {
   }, [searchUrl]);
 
   useEffect(() => {
-    const SEARCHED_URL = `https://api.themoviedb.org/3/search/movie?api_key=***REMOVED***&language=en-US&query=${Movie}&page=1&include_adult=false`;
+    const SEARCHED_URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${Movie}&page=1&include_adult=false`;
 
     async function fetchData() {
       if (Movie !== '') {
