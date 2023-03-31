@@ -17,23 +17,9 @@
 
 <img src="https://i.imgur.com/efFo3AB.png">
 
-## Example Code used and Snippets
-
-##### React Hooks (useState, useEffect, useRef, useParams) and React Router
-
-<img src="https://i.imgur.com/9cY0N9C.png">
-
-##### Axios to fetch data
-
-<img src="https://i.imgur.com/OtvRyRP.png">
-
 ##### Skeleton Loading States
 
 <img src="https://i.imgur.com/XetsFGs.gif">
-
-##### Cypress example test case
-
-<img src="https://i.imgur.com/pkNwnuP.png">
 
 ## Installation and Usage
 
