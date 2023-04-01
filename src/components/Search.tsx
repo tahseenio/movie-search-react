@@ -58,7 +58,7 @@ export default function Search() {
   }, [searchUrl]);
 
   useEffect(() => {
-    const SEARCHED_URL = `https://still-depths-10330.herokuapp.com/searched?movie=${Movie}`;
+    const SEARCHED_URL = `https://movie-search-server.vercel.app/searched?movie=${Movie}`;
 
     async function fetchData() {
       if (Movie !== '') {
