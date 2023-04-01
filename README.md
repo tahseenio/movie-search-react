@@ -10,6 +10,7 @@
 - Responsive on all devices
 - Testing UI done with Cypress
 - The website can be viewed [here](https://movie-search-react-one.vercel.app/)
+- Backend can be viewed [here](https://github.com/tahseenio/MovieSearchServer)
 
 ## Screenshots
 
