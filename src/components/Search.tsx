@@ -14,9 +14,9 @@ export default function Search() {
   const SearchBarInput = useRef('');
 
   const API_KEY = process.env.REACT_APP_API_KEY;
-  const POPULAR_URL = `https://still-depths-10330.herokuapp.com/popular`;
-  const TRENDING_URL = `https://still-depths-10330.herokuapp.com/trending`;
-  const TOP_RATED_URL = `https://still-depths-10330.herokuapp.com/toprated`;
+  const POPULAR_URL = `https://movie-search-server.vercel.app/popular`;
+  const TRENDING_URL = `https://movie-search-server.vercel.app/trending`;
+  const TOP_RATED_URL = `https://movie-search-server.vercel.app/toprated`;
 
   const [searchUrl, setSearchUrl] = useState(POPULAR_URL);
 

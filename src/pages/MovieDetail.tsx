@@ -15,7 +15,7 @@ export default function MovieDetail() {
   useEffect(() => {
     async function fetchData() {
       const promise = await fetch(
-        `https://still-depths-10330.herokuapp.com/banner?id=${id}`
+        `https://movie-search-server.vercel.app/banner?id=${id}`
       );
       const data = await promise.json();
       // console.log(data);
